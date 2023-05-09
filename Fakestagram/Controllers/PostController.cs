@@ -15,7 +15,8 @@ namespace Fakestagram.Controllers
         //private readonly FakestagramDBContext _dbContext;
         private readonly IPostsService _postsService;
 
-        public PostController(IMapper mapper, IPostsService postsService) {
+        public PostController(IMapper mapper, IPostsService postsService)
+        {
             _mapper = mapper;
             _postsService = postsService;
         }
@@ -74,39 +75,21 @@ namespace Fakestagram.Controllers
         }
 
 
-        //[HttpPost]
-        //[ValidateAntiForgeryToken]
-        //public ActionResult Edit(int id, IFormCollection collection)
-        //{
-        //    try
-        //    {
-        //        return RedirectToAction(nameof(Index));
-        //    }
-        //    catch
-        //    {
-        //        return View();
-        //    }
-        //}
+        [HttpDelete("{id}")]
+        public async Task Delete(int id)
+        {
+            var post = await _postsService.Get(id);
 
-        //// GET: PostController/Delete/5
-        //public ActionResult Delete(int id)
-        //{
-        //    return View();
-        //}
+            if (post == null)
+            {
+                NotFound();
+            }
+            else
+            {
+                await _postsService.Delete(post);
 
-        //// POST: PostController/Delete/5
-        //[HttpPost]
-        //[ValidateAntiForgeryToken]
-        //public ActionResult Delete(int id, IFormCollection collection)
-        //{
-        //    try
-        //    {
-        //        return RedirectToAction(nameof(Index));
-        //    }
-        //    catch
-        //    {
-        //        return View();
-        //    }
-        //}
+            }
+
+        }
     }
 }
