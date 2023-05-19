@@ -2,6 +2,7 @@ using Fakestagram.Models;
 using Fakestagram.Services;
 using Microsoft.EntityFrameworkCore;
 
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -16,6 +17,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 builder.Services.AddScoped(typeof(IPostsService), typeof(PostService));
+builder.Services.AddScoped(typeof(IUserService), typeof(UserService));
 //builder.Services.AddDbContext<FakestagramDBContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
 

@@ -9,12 +9,15 @@ namespace Fakestagram.Models
 
         // Tables
         public DbSet<Post> Posts { get; set; }
+        public DbSet<User> Users { get; set; }
+
 
         // Constructor
-        public FakestagramDBContext([NotNullAttribute] DbContextOptions options) : base(options) {
-            
+        public FakestagramDBContext([NotNullAttribute] DbContextOptions options) : base(options)
+        {
+           
         }
-
-
+        
     }
 }
+
